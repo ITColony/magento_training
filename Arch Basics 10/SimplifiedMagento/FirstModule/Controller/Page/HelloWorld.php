@@ -13,19 +13,18 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
 use SimplifiedMagento\FirstModule\NotMagento\PencilInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use SimplifiedMagento\FirstModule\NotMagento\Pencil;
+
 
 class HelloWorld extends \Magento\Framework\App\Action\Action
 {
     protected $pencilInterface;
     protected $productRepository;
-    protected $pencil;
+    
     public function __construct(Context $context,
-                                Pencil $pencil,
                                 PencilInterface $pencilInterface,
                                 ProductRepositoryInterface $productRepository)
     {
-        $this->pencil = $pencil;
+       
         $this->pencilInterface = $pencilInterface;
         $this->productRepository = $productRepository;
         parent::__construct($context);
@@ -41,9 +40,7 @@ class HelloWorld extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        $reflection = new \ReflectionClass(\SimplifiedMagento\FirstModule\NotMagento\Pencil::class);
-        $constructors = get_object_vars($this->pencil);
-        print_r($reflection->getConstructor());
+        echo get_class($this->productRepository);
     }
 }
 
