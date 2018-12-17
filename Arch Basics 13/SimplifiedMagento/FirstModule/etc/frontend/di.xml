@@ -1,0 +1,30 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsii="http://symfony.com/schema/dic/services"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+
+
+    <preference for="Magento\Vault\Api\PaymentTokenManagementInterface"
+                type="SimplifiedMagento\FirstModule\Model\CustomImplementation"
+                />
+    <preference for="SimplifiedMagento\FirstModule\Api\PencilInterface"
+                type="SimplifiedMagento\FirstModule\Model\Pencil"/>
+    <preference for="SimplifiedMagento\FirstModule\Api\Color"
+                type="SimplifiedMagento\FirstModule\Model\Yellow"/>
+    <preference for="SimplifiedMagento\FirstModule\Api\Size"
+                type="SimplifiedMagento\FirstModule\Model\Normal"/>
+    <type name="SimplifiedMagento\FirstModule\Model\Pencil">
+        <arguments>
+            <argument name="color" xsi:type="object">SimplifiedMagento\FirstModule\Model\Red</argument>
+            <argument name="size" xsi:type="object">SimplifiedMagento\FirstModule\Model\Big</argument>
+        </arguments>
+    </type>
+
+    <type name="SimplifiedMagento\FirstModule\Model\Student">
+        <arguments>
+            <argument name="name" xsi:type="string">Bob</argument>
+            <argument name="age" xsi:type="number">35</argument>
+        </arguments>
+    </type>
+
+
+</config>
